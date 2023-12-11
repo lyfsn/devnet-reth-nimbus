@@ -40,7 +40,7 @@ services:
       - "42703:50403"
     restart: unless-stopped
 
-   beacon:
+  beacon:
     image: statusim/nimbus-eth2:multiarch-latest
     user: "root"
     command:
