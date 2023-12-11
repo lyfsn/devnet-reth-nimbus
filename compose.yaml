@@ -65,7 +65,6 @@ services:
       - --metrics 
       - --metrics-address=0.0.0.0 
       - --metrics-port=8008 
-      - --web3signer-update-interval
       - --web3-signer-url=http://88.99.94.109:49300
       - --suggested-fee-recipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776 
       - --bootstrap-node=enr:-MS4QKjvQWjHjNSlrgJBnwI7j88ULp36kH6FegWreBuiHL0_UGs4EvAxALKLgvKjTFpk6x0zTPyxoXXt0PDeZxlAihgBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpAjvkwgQAAAOP__________gmlkgnY0gmlwhFhjXm2EcXVpY4Iq-YlzZWNwMjU2azGhAoNhfDA57peBhfKlgRRDYKmjwOUPSPqj97hpWmwycgJdiHN5bmNuZXRzAIN0Y3CCKviDdWRwgir4
