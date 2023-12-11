@@ -67,7 +67,7 @@ services:
       - --metrics-port=8008 
       - --web3-signer-url=http://88.99.94.109:49300
       - --suggested-fee-recipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776 
-      - --bootstrap-node=enr:-MS4QKjvQWjHjNSlrgJBnwI7j88ULp36kH6FegWreBuiHL0_UGs4EvAxALKLgvKjTFpk6x0zTPyxoXXt0PDeZxlAihgBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpAjvkwgQAAAOP__________gmlkgnY0gmlwhFhjXm2EcXVpY4Iq-YlzZWNwMjU2azGhAoNhfDA57peBhfKlgRRDYKmjwOUPSPqj97hpWmwycgJdiHN5bmNuZXRzAIN0Y3CCKviDdWRwgir4
+      - --bootstrap-node=enr:-MW4QIPB_mW73_QCAydxGM8w95SJwjYV8U0Qvrj1QS9v8ki7GOavZq1nD-kJ54dMC4JvpQ6QhTSOBY2YmcL1s9zCLlWBz4dhdHRuZXRziP__________hGV0aDKQI75MIEAAADj__________4JpZIJ2NIJpcIRYY15thHF1aWOCKvmJc2VjcDI1NmsxoQKDYXwwOe6XgYXypYEUQ2Cpo8DlD0j6o_e4aVpsMnICXYhzeW5jbmV0cw-DdGNwgir4g3VkcIIq-A
       - --direct-peer=/ip4/88.99.94.109/tcp/11000/p2p/16Uiu2HAm4GXc2aYZkdfHvvn56s6zEdoSAwdiNcGkzvXX5y4MX4U4
       - --external-beacon-api-url=http://88.99.94.109:9781
     volumes:
