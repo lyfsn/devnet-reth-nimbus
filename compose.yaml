@@ -1,0 +1,84 @@
+version: "3.8"
+
+services:
+  execution:
+    image: ghcr.io/paradigmxyz/reth:latest
+    command:
+      - node
+      - -vvv
+      - --datadir=/execution-data
+      - --chain=/el-cl-genesis-data/custom_config_data/genesis.json
+      - --addr=0.0.0.0
+      - --port=50403
+      - --discovery.port=50403
+      - --discovery.addr=0.0.0.0
+      - --http
+      - --http.port=8545
+      - --http.addr=0.0.0.0
+      - --http.corsdomain=*
+      - --http.api=admin,net,eth,web3,debug,trace
+      - --ws
+      - --ws.addr=0.0.0.0
+      - --ws.port=8546
+      - --ws.api=net,eth
+      - --ws.origins=*
+      - --nat=extip:${IP_ADDRESS}
+      - --authrpc.port=8551
+      - --authrpc.jwtsecret=/el-cl-genesis-data/jwt/jwtsecret
+      - --authrpc.addr=0.0.0.0
+      - --metrics=0.0.0.0:9001
+      - --bootnodes=enode://30674d1f5fa3cf763c2d991eeaf585db42c45737a4d47aee3653b50ac33947437769e13f04c12bab63d5c2a416d08b2637e6340d13b7d59489f0ac8dae919756@88.99.94.109:50303
+      - --trusted-peers=enode://30674d1f5fa3cf763c2d991eeaf585db42c45737a4d47aee3653b50ac33947437769e13f04c12bab63d5c2a416d08b2637e6340d13b7d59489f0ac8dae919756@88.99.94.109:50303
+    volumes:
+      - ./execution-data:/execution-data
+      - ./el-cl-genesis-data:/el-cl-genesis-data
+    ports:
+      - "11745:8545" 
+      - "11746:8546" 
+      - "11751:8551" 
+      - "9071:9001" 
+      - "42703:50403"
+    restart: unless-stopped
+
+   beacon:
+    image: statusim/nimbus-eth2:multiarch-latest
+    user: "root"
+    command:
+      - --non-interactive=true 
+      - --log-level=INFO 
+      - --udp-port=9000 
+      - --tcp-port=9000 
+      - --network=/el-cl-genesis-data/custom_config_data 
+      - --data-dir=$HOME/consensus-data 
+      - --web3-url=http://execution:8551 
+      - --nat=extip:${IP_ADDRESS} 
+      - --enr-auto-update=false 
+      - --history=archive 
+      - --rest 
+      - --rest-address=0.0.0.0 
+      - --rest-allow-origin=* 
+      - --rest-port=4000 
+      - --doppelganger-detection=false 
+      - --subscribe-all-subnets=true 
+      - --num-threads=4 
+      - --jwt-secret=/el-cl-genesis-data/jwt/jwtsecret 
+      - --metrics 
+      - --metrics-address=0.0.0.0 
+      - --metrics-port=8008 
+      - --web3signer-update-interval
+      - --web3-signer-url=http://88.99.94.109:49300
+      - --suggested-fee-recipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776 
+      - --bootstrap-node=enr:-MS4QKjvQWjHjNSlrgJBnwI7j88ULp36kH6FegWreBuiHL0_UGs4EvAxALKLgvKjTFpk6x0zTPyxoXXt0PDeZxlAihgBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpAjvkwgQAAAOP__________gmlkgnY0gmlwhFhjXm2EcXVpY4Iq-YlzZWNwMjU2azGhAoNhfDA57peBhfKlgRRDYKmjwOUPSPqj97hpWmwycgJdiHN5bmNuZXRzAIN0Y3CCKviDdWRwgir4
+      - --direct-peer=/ip4/88.99.94.109/tcp/11000/p2p/16Uiu2HAm4GXc2aYZkdfHvvn56s6zEdoSAwdiNcGkzvXX5y4MX4U4
+      - --external-beacon-api-url=http://88.99.94.109:9781
+    volumes:
+      - ./consensus-data:/consensus-data 
+      - ./el-cl-genesis-data:/el-cl-genesis-data
+    ports:
+      - "14700:9000/udp"
+      - "14700:9000/tcp" 
+      - "4970:4000"
+      - "10708:8008"
+    depends_on:
+      - execution
+    restart: unless-stopped

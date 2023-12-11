@@ -1,0 +1,16 @@
+
+
+execution-data
+consensus-data
+.idea
+*sqlite*
+el-cl-genesis-data
+
+*.lock
+*.log
+
+
+*.tar.gz
+*-data
+geth
+logs
