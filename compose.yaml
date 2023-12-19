@@ -67,6 +67,7 @@ services:
       - --metrics-port=8008 
       - --web3-signer-url=http://88.99.94.109:49300
       - --suggested-fee-recipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776 
+      - --bootstrap-node=enr:-Ma4QEo2mfc5Oq1HMSx96kQJVWtOzwxjpZmMVcFx5boL7j1Pb51LZ3K0NYyWFminBJc2PwFYCNdtXmEfA-aFmXWLsmWCBpqHYXR0bmV0c4j__________4RldGgykCO-TCBQAAA4QEIPAAAAAACCaWSCdjSCaXCEWGNebYRxdWljgir5iXNlY3AyNTZrMaECg2F8MDnul4GF8qWBFENgqaPA5Q9I-qP3uGlabDJyAl2Ic3luY25ldHMPg3RjcIIq-IN1ZHCCKvg
       - --direct-peer=/ip4/88.99.94.109/tcp/11000/p2p/16Uiu2HAm4GXc2aYZkdfHvvn56s6zEdoSAwdiNcGkzvXX5y4MX4U4
       - --external-beacon-api-url=http://88.99.94.109:9781
     volumes:
